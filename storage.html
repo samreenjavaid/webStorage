@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+function signUp()
+{
+    var email=document.getElementById('txtEmail').value;  
+    var password=document.getElementById('txtPass').value;
+    if(('localStorage' in window) && window['localStorage']!=null)
+    {
+       localStorage.setItem('u_email',email);
+       localStorage.setItem('u_password',password);
+    } else{
+        alert("Not Allowed");
+    }
+}
+
+function signIn()
+{
+    var email=document.getElementById('txtEmail').value;  
+    var password=document.getElementById('txtPass').value;
+    if(('localStorage' in window) && window['localStorage']!=null)
+    {
+       var user_email = localStorage.getItem('u_email');
+       var user_password = localStorage.getItem('u_password');
+
+       if(user_email==email && user_password==password) 
+       {
+           alert("Login successful");
+           window.open("file:///C:/Users/asp/Desktop/Storage/sessionStorage1.html");
+           
+       }else{
+           alert("Invalid Credentials");
+       }
+    } else{
+        alert("Not Allowed");
+    }
+}
+</script>
+
+
+    <form>
+        Enter Email : 
+        <input type="email" id="txtEmail"/>
+        <br/>
+        Enter Password :
+        <input type="password" id="txtPass"/>
+        <br>
+        <button onclick="signUp()">Sign Up</button>
+        <button onclick="signIn()">Sign In</button>
+    </form>
+</body>
+</html>

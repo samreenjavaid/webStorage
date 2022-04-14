@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+ <head>
+ <title> Local Storage </title>
+ <script>
+ function store()
+ {if (('localStorage' in window) && window.localStorage !== null)
+ {
+ var username = document.getElementById('username').value;
+ localStorage.setItem('username', username);
+ }
+ else
+ {
+ alert ('your browser does not support storage');
+ }
+ }
+ function cancel_store()
+ {
+ if (('localStorage' in window) && window['localStorage'] !== null)
+ {
+ localStorage.removeItem('username');
+ print();
+ }
+ else
+ {
+ alert ('your browser does not support storage');
+ }
+ }
+ function print()
+{
+ var username = localStorage.getItem('username');
+ document.getElementById('lblMsg').innerHTML = 'Username:is <b>'+ username+'</b>';
+ }
+ </script>
+</head>
+ <body onload="print()">
+ <form method="get" >
+ Username: <input type="text" id="username" value="" size="20"
+onblur="store()"/>
+<input type="submit" value="Submit"/>
+<input type="reset" Value="Cancel" onclick="cancel_store()"/>
+ </form>
+ <br/><label id="lblMsg"></label>
+</body>
+</html>

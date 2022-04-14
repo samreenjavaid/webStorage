@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+ <head>
+ <title> Session Storage </title>
+ <script>
+ function store()
+ {if (('sessionStorage' in window) && window['sessionStorage'] !== null)
+ {
+ var username = document.getElementById('username').value;
+ sessionStorage.setItem('username', username);
+ }
+ else
+ {
+ alert ('your browser does not support storage');
+ }
+ }
+ function cancel_store()
+ {
+ if (('sessionStorage' in window) && window['sessionStorage'] !== null)
+ {
+ sessionStorage.removeItem('username');
+ }
+ else
+ {
+ alert ('your browser does not support storage');
+ }
+ }
+ function print()
+{
+ var username = sessionStorage.getItem('username');
+ document.getElementById('lblMsg').innerHTML = '<br/>Username is <b>'+ username+'</b>';
+ }
+ </script>
+</head>
+ <body onload="print()">
+ <form method="get" >
+ Username: <input type="text" id="username" value="" size="20"
+onblur="store()"/>
+<input type="submit" value="Submit"/>
+<input type="reset" Value="Cancel" onclick="cancel_store()"/>
+</form>
+<label id="lblMsg"></label><br>
+ </body>
+</html>
